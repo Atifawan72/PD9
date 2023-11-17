@@ -1,0 +1,361 @@
+#include<iostream>
+using namespace std;
+
+bool isEven(string arr) {
+    int length = arr.length();
+    return length % 2 == 0;
+}
+
+int main() {
+    cout << "Enter a String: ";
+    string arr;
+    cin >> arr;
+    cout << isEven(arr);
+
+    return 0;
+}
+
+Task 2 
+
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+string containsSeven(int numbers[], int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        int num = abs(numbers[i]);
+
+
+        while (num > 0)
+        {
+            if (num % 10 == 7)
+            {
+                return "Boom!";
+            }
+            num /= 10;
+        }
+
+       
+    }
+    return "there is no 7 in the array";
+}
+int main()
+{
+    int size;
+    cout << "Enter the size of Array: ";
+    cin >> size;
+
+    int numbers[size];
+    
+    for (int i = 0; i < size; i++)
+    {
+        cout<<"Enter Element "<<i+1<<" : ";
+        cin >> numbers[i];
+    }
+    cout << containsSeven(numbers, size) << endl;
+
+    return 0;
+}
+ task3 
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+string containsSeven(int numbers[], int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        int num = abs(numbers[i]);
+
+
+        while (num > 0)
+        {
+            if (num % 10 == 7)
+            {
+                return "Boom!";
+            }
+            num /= 10;
+        }
+
+       
+    }
+    return "there is no 7 in the array";
+}
+int main()
+{
+    int size;
+    cout << "Enter the size of Array: ";
+    cin >> size;
+
+    int numbers[size];
+    
+    for (int i = 0; i < size; i++)
+    {
+        cout<<"Enter Element "<<i+1<<" : ";
+        cin >> numbers[i];
+    }
+    cout << containsSeven(numbers, size) << endl;
+
+    return 0;
+}
+
+task4 
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+void evenOddTransform(int arr[], int size, int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < size; j++)
+        {
+            if (arr[i] % 2 != 0)
+            {
+                arr[i] = arr[i] + 2;
+            }
+            else
+            {
+                arr[i] = arr[i] - 2;
+            }
+        }
+    }
+}
+
+int main()
+{
+    int size;
+    cout << "Enter the size of Array: ";
+    cin >> size;
+    int arr[size];
+
+    for (int j = 0; j < size; j++)
+    {
+        cout << "Enter Element " << j + 1 << ": ";
+        cin >> arr[j];
+    }
+
+    int n;
+    cout << "Enter number of times even-odd transformation need to be done: ";
+    cin >> n;
+
+    evenOddTransform(arr, size, n);
+
+    // Print the transformed array in the specified format
+    cout << "[";
+    for (int j = 0; j < size - 1; j++)
+    {
+        cout << arr[j] << ", ";
+    }
+    if (size > 0)
+    {
+        cout << arr[size - 1];
+    }
+    cout << "]" << endl;
+
+    return 0;
+}
+ task 5 
+#include <iostream>
+#include <string>
+using namespace std;
+
+int commonchar(string arr1, string arr2)
+{
+    int c = 0;
+
+    for (int i = 0 ; i < arr1.size()-1 ; i++)
+    {
+        for (int j = 0; j < arr2.size()-1; j++)
+        {
+            if (arr1[i] == arr2[j])
+            {
+                c++;
+                break; 
+            }
+        }
+    }
+
+    return c;
+}
+
+int main()
+{
+    string ch1;
+    string ch2;
+
+    cout << "Enter the first string: ";
+    cin >> ch1;
+    cout << "Enter the second string: ";
+    cin >> ch2;
+
+    cout << "Number of common characters: " << commonchar(ch1, ch2) << endl;
+
+    return 0;
+}
+
+task 6
+#include <iostream>
+using namespace std;
+
+int coloringTime(string cols[], int size) {
+  int colorSwitches = 0;
+
+  for (int i = 0; i < size-1; i++) {
+    if (cols[i] != cols[i+1]) {
+      colorSwitches++;
+    }
+  }
+
+  int totalTime = (size * 2) + colorSwitches;
+  return totalTime;
+}
+
+int main() {
+  int arraySize;
+  cout << "Enter the size of Array: ";
+  cin >> arraySize;
+
+  string colorArray[arraySize];
+  for (int i = 0; i < arraySize; i++) {
+    cout << "Enter Element " << i + 1 << ": ";
+    cin >> colorArray[i];
+  }
+
+  cout << "Time to color: " << coloringTime(colorArray, arraySize) << " seconds" << endl;
+
+  return 0;
+}
+
+task 7 
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+void convertPINToDance(string pin) {
+    const string MOVES[] = {"Shimmy", "Shake", "Pirouette", "Slide", "Box Step", "Headspin", "Dosado", "Pop", "Lock", "Arabesque"};
+
+    
+    if (pin.length() != 4 || !isdigit(pin[0]) || !isdigit(pin[1]) || !isdigit(pin[2]) || !isdigit(pin[3])) {
+        cout << "Invalid input." << endl;
+        return;
+    }
+
+    for (int i = 0; i < 4; ++i) {
+       
+        int digit = pin[i] - '0';
+
+       
+        int index = (digit + i) % 10; 
+
+        // Output the corresponding dance move
+        cout << MOVES[index] << (i < 3 ? ", " : "");
+    }
+
+    cout << endl; 
+}
+
+int main() {
+    string pin;
+
+    cout << "Enter your PIN (4 digits): ";
+    cin >> pin;
+
+    convertPINToDance(pin);
+
+    return 0;
+}
+
+task 8 
+#include <iostream>
+#include <string>
+using namespace std;
+string findBrokenKeys(string correctPhrase, string actualTyped)
+{
+    string brokenkeys;
+
+    for (int i = 0; i < brokenkeys.size() - 1; i++)
+        if (correctPhrase[i] != actualTyped[i])
+        {
+            brokenkeys += correctPhrase[i];
+            break;
+
+            
+        }
+        return brokenkeys;
+}
+int main()
+{
+    string correct;
+    string actual;
+    string broke;
+    cout << "Enter the correct phrase: ";
+    getline(cin, correct);
+    cout << "Enter what you actually typed: ";
+    getline(cin, actual);
+
+    broke = findBrokenKeys(correct, actual);
+    cout << "Broken keys: " << broke;
+}
+
+task 9
+#include <iostream>
+using namespace std;
+bool valword(string word);
+string findlongest(string wordList[], int numWords);
+
+
+main()
+{
+    int numWords;
+    cout << "Enter the number of words: ";
+    cin >> numWords;
+    string words[numWords];
+    cout << "Enter the words, one by one:" << endl;
+    for (int i = 0; i < numWords; i++)
+    {
+        cin >> words[i];
+    }
+    string result = findlongest(words, numWords);
+    if (result.empty())
+    {
+        cout << "" << endl;
+    }
+    else
+    {
+        cout << "Longest 7-segment word: " << result << endl;
+    }
+}
+bool valword(string word)
+{
+    for (int i = 0; i < word.length(); i++)
+    {
+        char character = word[i];
+        if (character == 'k' || character == 'm' || character == 'v' || character == 'w' || character == 'x')
+        {
+            return false;
+        }
+    }
+    return true;
+}
+string findlongest(string wordList[], int numWords)
+{
+    string largestWord;
+    for (int i = 0; i < numWords; i++)
+    {
+        if (valword(wordList[i]) && wordList[i].length() > largestWord.length())
+        {
+            largestWord = wordList[i];
+        }
+    }
+    return largestWord;
+}
+
+ 
